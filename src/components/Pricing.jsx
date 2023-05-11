@@ -4,7 +4,7 @@ const tiers = [
     {
         name: 'Starter',
         id: 'tier-hobby',
-        href: 'www.google.us',
+        href: '/api/index',
         priceMonthly: '$49',
         description: 'Good for beginner agents looking to increase outreach.',
         features: ['Phone Number', 'Area code', 'State', '24/7 support'],
