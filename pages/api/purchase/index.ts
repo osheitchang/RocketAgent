@@ -19,7 +19,7 @@ const makeAPurchase = async (req: NextApiRequest, res: NextApiResponse) => {
         },
       ],
       mode: 'payment',
-      success_url: `${req.headers.origin}/?success=true`,
+      success_url: `${req.headers.origin}/${env.SUCCESS_PAGE}`,
       cancel_url: `${req.headers.origin}/?canceled=true`,
       automatic_tax: {enabled: true},
     });

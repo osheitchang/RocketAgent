@@ -2,6 +2,7 @@ const STRIPE_SECRET_KEY: string = process.env.STRIPE_SECRET_KEY || '';
 const STRIPE_PUBLIC_KEY: string = process.env.STRIPE_PUBLIC_KEY || '';
 const STRIPE_API_VERSION: string = process.env.STRIPE_API_VERSION || '';
 const API_BASE: string = process.env.API_BASE || process.env.NEXT_PUBLIC_API_BASE || '';
+const SUCCESS_PAGE: string = process.env.SUCCESS_PAGE || '';
 // Firebase
 const FIREBASE_API_KEY = process.env.NEXT_PUBLIC_FIREBASE_API_KEY || '';
 const FIREBASE_AUTH_DOMAIN= process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || '';
@@ -16,6 +17,7 @@ const env = {
   STRIPE_SECRET_KEY,
   STRIPE_PUBLIC_KEY,
   API_BASE,
+  SUCCESS_PAGE,
   FIREBASE_API_KEY,
   FIREBASE_AUTH_DOMAIN,
   FIREBASE_PROJECT_ID,
