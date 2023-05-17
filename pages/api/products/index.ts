@@ -1,7 +1,7 @@
 import env from "@/pages/api/config";
 import {NextApiRequest, NextApiResponse} from "next";
 import Stripe from "stripe";
-import {ProductModel} from "@/pages/api/products/product.model";
+import {ProductModel} from "@/src/model/product.model";
 
 const getProducts = async (req: NextApiRequest, res: NextApiResponse) => {
   try {

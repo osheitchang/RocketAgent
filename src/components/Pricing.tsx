@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { CheckIcon } from '@heroicons/react/20/solid'
-import {ProductModel} from "@/pages/api/products/product.model";
+import {ProductModel} from "@/src/model/product.model";
 import dollarString from "@/src/utils/formatCurrency";
 import axios from "axios";
 
