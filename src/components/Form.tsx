@@ -31,6 +31,13 @@ const Form = () => {
     event.preventDefault();
     try {
       const data = await axios.post('/user', formData);
+      setFormData({
+        email: '',
+        message: '',
+        phoneNumber: '',
+        name: '',
+        surname: '',
+      });
       console.log(data);
     } catch (error) {
       console.warn(error);

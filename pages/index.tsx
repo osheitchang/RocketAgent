@@ -37,7 +37,7 @@ const Home = ({products}: {products: ProductModel[]}) => {
         <Newsletter />
         <Form />
       </main>
-        <Footer />
+      <Footer />
     </>
   )
 }
