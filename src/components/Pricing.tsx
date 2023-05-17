@@ -3,8 +3,6 @@ import { CheckIcon } from '@heroicons/react/20/solid'
 import {ProductModel} from "@/pages/api/products/product.model";
 import dollarString from "@/src/utils/formatCurrency";
 import axios from "axios";
-import env from "@/pages/api/config";
-axios.defaults.baseURL = env.API_BASE;
 
 type PricingProps = {
   products: ProductModel[],

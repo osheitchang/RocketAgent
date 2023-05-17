@@ -1,6 +1,42 @@
-import { BuildingOffice2Icon, EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/outline'
+import React, {useState} from 'react';
+import {RegisterModel} from "@/src/model/register.model";
+import axios from "axios";
 
-export default function Form() {
+const Form = () => {
+  const [formData, setFormData] = useState<RegisterModel>({
+    email: '',
+    message: '',
+    phoneNumber: '',
+    name: '',
+    surname: '',
+  });
+
+  /**
+   * On change form data and set it into the state
+   * @param index
+   * @param value
+   */
+  const onChangeData = (index: string, value: string) => {
+    setFormData(prevState => ({
+      ...prevState,
+      [index]: value,
+    }));
+  };
+
+  /**
+   * On submit form
+   * @param event
+   */
+  const submitForm = async (event: any) => {
+    event.preventDefault();
+    try {
+      const data = await axios.post('/user', formData);
+      console.log(data);
+    } catch (error) {
+      console.warn(error);
+    }
+  };
+
   return (
     <div id='form' className="relative isolate bg-white">
       <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
@@ -71,7 +107,7 @@ export default function Form() {
             </dl>
           </div>
         </div>
-        <form action="#" method="POST" className="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-48">
+        <form onSubmit={submitForm} className="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-48">
           <div className="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
               <div>
@@ -83,6 +119,8 @@ export default function Form() {
                     type="text"
                     name="first-name"
                     id="first-name"
+                    value={formData.name}
+                    onChange={({target}) => onChangeData('name', target.value)}
                     autoComplete="given-name"
                     className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
@@ -97,6 +135,8 @@ export default function Form() {
                     type="text"
                     name="last-name"
                     id="last-name"
+                    value={formData.surname}
+                    onChange={({target}) => onChangeData('surname', target.value)}
                     autoComplete="family-name"
                     className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
@@ -111,6 +151,8 @@ export default function Form() {
                     type="email"
                     name="email"
                     id="email"
+                    value={formData.email}
+                    onChange={({target}) => onChangeData('email', target.value)}
                     autoComplete="email"
                     className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
@@ -125,6 +167,8 @@ export default function Form() {
                     type="tel"
                     name="phone-number"
                     id="phone-number"
+                    value={formData.phoneNumber}
+                    onChange={({target}) => onChangeData('phoneNumber', target.value)}
                     autoComplete="tel"
                     className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
@@ -139,6 +183,8 @@ export default function Form() {
                     name="message"
                     id="message"
                     rows={4}
+                    value={formData.message}
+                    onChange={({target}) => onChangeData('message', target.value)}
                     className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     defaultValue={''}
                   />
@@ -157,5 +203,6 @@ export default function Form() {
         </form>
       </div>
     </div>
-  )
+  );
 }
+export default Form;
