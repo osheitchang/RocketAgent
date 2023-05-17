@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import Head from 'next/head'
 import axios from "axios";
@@ -13,6 +12,9 @@ import Pricing from '../src/components/Pricing';
 import Form from '../src/components/Form'
 import Newsletter from '../src/components/Newsletter'
 import {ProductModel} from "@/pages/api/products/product.model";
+import env from "@/pages/api/config";
+
+axios.defaults.baseURL = env.API_BASE;
 
 const inter = Inter({ subsets: ['latin'] })
 

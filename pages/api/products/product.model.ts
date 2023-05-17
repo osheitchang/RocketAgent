@@ -4,5 +4,6 @@ export interface ProductModel {
   price: number;
   currency: string;
   description: string | null;
-  features: Array<string>
+  features: Array<string>;
+  priceId: string;
 }

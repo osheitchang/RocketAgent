@@ -19,6 +19,7 @@ const getProducts = async (req: NextApiRequest, res: NextApiResponse) => {
         currency: productPrice?.currency || 'usd',
         description: product.description,
         features: Object.values(product.metadata),
+        priceId: productPrice?.id || '',
       };
     })
     res.status(200).json(products);
