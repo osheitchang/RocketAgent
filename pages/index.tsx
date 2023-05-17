@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import Head from 'next/head'
+import axios from "axios";
 
 
 import Header from '../src/components/Header';
@@ -11,10 +12,11 @@ import SecondFeature from '../src/components/SecondFeature';
 import Pricing from '../src/components/Pricing';
 import Form from '../src/components/Form'
 import Newsletter from '../src/components/Newsletter'
+import {ProductModel} from "@/pages/api/products/product.model";
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+const Home = ({products}: {products: ProductModel[]}) => {
   return (
     <>
       <Head>
@@ -29,11 +31,29 @@ export default function Home() {
         <Hero />
         <MainFeature />
         <SecondFeature />
-        <Pricing />
+        <Pricing products={products} />
         <Newsletter />
         <Form />
       </main>
         <Footer />
     </>
   )
+}
+
+export default Home;
+export const getServerSideProps = async () => {
+  try {
+    const {data} = await axios.get<ProductModel[]>('/products');
+    return {
+      props: {
+        products: data.reverse(),
+      },
+    };
+  } catch {
+    return {
+      props: {
+        products: [],
+      },
+    };
+  }
 }
