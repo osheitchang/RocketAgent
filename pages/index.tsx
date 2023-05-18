@@ -39,7 +39,7 @@ const Home = ({products}: {products: ProductModel[]}) => {
   return (
     <>
       <Head>
-        <title>Top Producer - Increasing results with quality leads.</title>
+        <title>Rocket Agent - Increasing results with quality leads.</title>
         <meta
           name="description"
           content=""
