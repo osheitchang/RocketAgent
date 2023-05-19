@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from "@/src/components/Header";
+import Link from 'next/link'
 
 const Success = () => {
   return (
@@ -45,12 +46,12 @@ const Success = () => {
               Our team is making sure everything is right with your order. Allow us 24-48 hrs for final delivery.
             </p>
             <div className="mt-8">
-              <a
+              <Link
                 href="/"
                 className="inline-flex rounded-md bg-white/10 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
                 Continue
-              </a>
+              </Link>
             </div>
           </div>
         </div>
