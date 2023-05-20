@@ -1,13 +1,17 @@
 import React, {useState} from 'react';
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
 import { CheckIcon } from '@heroicons/react/20/solid'
 import {ProductModel} from "@/src/model/product.model";
 import dollarString from "@/src/utils/formatCurrency";
 import axios from "axios";
+import env from '../../pages/api/config';
 
 type PricingProps = {
   products: ProductModel[],
 }
 
+const stripePromise = loadStripe(env.STRIPE_PUBLIC_KEY);
 interface ProductsAuxModel extends ProductModel {
   loading: boolean;
 }
@@ -44,7 +48,7 @@ const Pricing = (props: PricingProps) => {
     }
   }
   return (
-    <>
+    <Elements stripe={stripePromise}>
       <div id='packages' className="isolate overflow-hidden bg-gray-900">
         <div className="mx-auto max-w-7xl px-6 pb-96 pt-24 text-center sm:pt-32 lg:px-8">
           <div className="mx-auto max-w-4xl">
@@ -139,7 +143,7 @@ const Pricing = (props: PricingProps) => {
           </div>
         </div>
       </div>
-    </>
+    </Elements>
   );
 }
 

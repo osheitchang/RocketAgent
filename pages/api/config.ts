@@ -1,5 +1,5 @@
 const STRIPE_SECRET_KEY: string = process.env.STRIPE_SECRET_KEY || '';
-const STRIPE_PUBLIC_KEY: string = process.env.STRIPE_PUBLIC_KEY || '';
+const STRIPE_PUBLIC_KEY: string = process.env.STRIPE_PUBLIC_KEY || process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY || '';
 const STRIPE_API_VERSION: string = process.env.STRIPE_API_VERSION || '';
 const API_BASE: string = process.env.API_BASE || process.env.NEXT_PUBLIC_API_BASE || '';
 const SUCCESS_PAGE: string = process.env.SUCCESS_PAGE || '';
